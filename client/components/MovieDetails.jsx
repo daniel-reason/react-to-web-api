@@ -2,17 +2,17 @@ import React from 'react'
 
 export default React.createClass({
   render () {
-    const widget = this.props.widget
+    const movie = this.props.movie
     const isVisble = this.props.isVisible
     const hide = () => this.props.hideDetails()
-    const classes = "widget-details " + isVisble ? 'visible' : 'hidden'
+    const classes = "movie-details " + isVisble ? 'visible' : 'hidden'
     return (
       <div className={classes}>
         <h2>Details</h2>
-        <p>Name: {widget.name}</p>
-        <p>Price: {widget.price}</p>
-        <p>Mfg: {widget.mfg}</p>
-        <p>In stock: {widget.inStock}</p>
+        <p>Title: {movie.title}</p>
+        <p>Director: {movie.director}</p>
+        <p>Actors: {movie.actor}</p>
+        <p>Year: {movie.year}</p>
         <a href="#" onClick={hide}>Close</a>
       </div>
     )

@@ -1,44 +1,44 @@
 import React from 'react'
 
 import api from '../api'
-import AddWidget from './AddWidget'
-import WidgetList from './WidgetList'
-import WidgetDetails from './WidgetDetails'
+import SearchMovie from './SearchMovie'
+import MovieList from './MovieList'
+import MovieDetails from './MovieDetails'
 import ErrorMessage from './ErrorMessage'
 
 export default React.createClass({
   getInitialState () {
     return {
       error: null,
-      widgets: [],
-      activeWidget: null,
+      movies: [],
+      activeMovie: null,
       detailsVisible: false,
-      addWidgetVisible: false
+      searchMovieVisible: false
     }
   },
 
   componentDidMount () {
-    api.getWidgets(this.renderWidgets)
+    api.getMovies(this.renderMovies)
   },
 
-  renderWidgets (err, widgets) {
+  renderMovies (err, movies) {
     this.setState({
       error: err,
-      widgets: widgets
+      movies: movies
     })
   },
 
   refreshList (err) {
     this.setState({
       error: err,
-      addWidgetVisible: false
+      searchMovieVisible: false
     })
-    api.getWidgets(this.renderWidgets)
+    api.getMovies(this.renderMovies)
   },
 
-  showAddWidget () {
+  showSearchMovie () {
     this.setState({
-      addWidgetVisible: true
+      searchMovieVisible: true
     })
   },
 
@@ -46,24 +46,24 @@ export default React.createClass({
     return (
       <div>
         <ErrorMessage error={this.state.error} />
-        <h1>Widgets FTW!</h1>
-        <WidgetList
+        <h1>Movies FTW!</h1>
+        <MovieList
           showDetails={this.showDetails}
-          widgets={this.state.widgets} />
-        <p><a href='#' onClick={this.showAddWidget}>Add widget</a></p>
-        {this.state.addWidgetVisible && <AddWidget
-          finishAdd={this.refreshList} />}
-        {this.state.detailsVisible && <WidgetDetails
+          movies={this.state.movies} />
+        <p><a href='#' onClick={this.showSearchMovie}>Search movie</a></p>
+        {this.state.searchMovieVisible && <SearchMovie
+          finishSearch={this.refreshList} />}
+        {this.state.detailsVisible && <MovieDetails
           isVisible={this.state.detailsVisible}
           hideDetails={this.hideDetails}
-          widget={this.state.activeWidget} />}
+          movie={this.state.activeMovie} />}
       </div>
     )
   },
 
-  showDetails (widget) {
+  showDetails (movie) {
     this.setState({
-      activeWidget: widget,
+      activeMovie: movie,
       detailsVisible: true
     })
   },

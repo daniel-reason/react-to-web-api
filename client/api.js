@@ -1,15 +1,17 @@
 import request from 'superagent'
 
-var widgetUrl = 'http://localhost:3000/widgets'
+var netflixUrl = 'http://localhost:3000/movies'
+// var netflixUrl = 'https://community-netflix-roulette.p.mashape.com/api.php'
 
 export default {
-  getWidgets: getWidgets,
-  appendWidget: appendWidget
+  getMovies: getMovies,
+  appendMovie: appendMovie,
+  removeMovie: removeMovie
 }
 
-function getWidgets (callback) {
+function getMovies (callback) {
   request
-    .get(widgetUrl)
+    .get(netflixUrl)
     .end(function (err, res) {
       if (err) {
         callback(err)
@@ -19,10 +21,10 @@ function getWidgets (callback) {
     })
 }
 
-function appendWidget (widget, callback) {
+function appendMovie (movie, callback) {
   request
-    .post(widgetUrl)
-    .send(widget)
+    .post(netflixUrl)
+    .send(movie)
     .end(function (err, res) {
       if (err) {
         callback(err)
@@ -30,4 +32,16 @@ function appendWidget (widget, callback) {
         callback()
       }
     })
+}
+
+function removeMovie (id, callback) {
+  request
+  .delete(netflixUrl + "/" + id)
+  .end(function (err, res) {
+    if (err) {
+      callback(err)
+    } else {
+      callback(null, res)
+    }
+  })
 }
