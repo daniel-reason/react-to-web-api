@@ -1,7 +1,7 @@
 import request from 'superagent'
 
 var netflixUrl = 'http://localhost:3000/movies'
-// var netflixUrl = 'https://community-netflix-roulette.p.mashape.com/api.php'
+// var netflixUrl = 'http://netflixroulette.net/api/api.php?title=Attack%20on%20titan'
 
 export default {
   getMovies: getMovies,

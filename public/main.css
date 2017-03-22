@@ -1,8 +1,17 @@
-.widget-details .visible {
+.movie-details .visible {
   display: block;
 }
 
-.widget-details .hidden {
+.movie-details .hidden {
   display: none;
 }
 
+body {
+  background-image: url("http://orig14.deviantart.net/6543/f/2012/340/2/c/dark_hex_texture_by_fantomkilla-d5n8r7b.jpg");
+  color: white;
+}
+
+a {
+  color: white;
+  text-shadow: 3px 2px hotpink;
+}
