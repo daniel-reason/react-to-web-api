@@ -6,7 +6,7 @@ export default React.createClass({
     const movie = this.props.movie
     return (
       <div className="movie-list-item">
-        {`${movie.title} `}
+        {`${movie.show_title} `}
         <a href="#" onClick={() => this.props.showDetails(movie)}>details</a>
           &nbsp; | &nbsp;
         <a href="#" onClick={this.remove}>delete</a>
@@ -16,7 +16,6 @@ export default React.createClass({
 
   remove () {
     var refreshMovies = this.props.refreshMovies
-    console.log(this.props)
     api.removeMovie(this.props.movie.id, function (err, res) {
       if (err) throw err
       refreshMovies()

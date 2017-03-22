@@ -49,7 +49,8 @@ export default React.createClass({
         <h1>Movies FTW!</h1>
         <MovieList
           showDetails={this.showDetails}
-          movies={this.state.movies} />
+          movies={this.state.movies}
+          refreshMovies={this.refreshList} />
         <p><a href='#' onClick={this.showSearchMovie}>Search movie</a></p>
         {this.state.searchMovieVisible && <SearchMovie
           finishSearch={this.refreshList} />}
